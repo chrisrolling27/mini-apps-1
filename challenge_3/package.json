@@ -1,0 +1,23 @@
+{
+  "name": "multistep_checkout",
+  "version": "1.0.0",
+  "description": "challenge 3 of mini app week",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/server.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "react": "^16.14.0",
+    "underscore": "^1.12.1",
+    "mysql2": "^2.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "chrisrolling27"
+  },
+  "author": "Chris Rolling",
+  "license": "ISC"
+}
