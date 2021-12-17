@@ -4,8 +4,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       counter : 42,
+      next: false,
       form1: false,
-      form2: false
+      form2: false,
+      form3: false,
+      form4: false,
+      checkout: true
     }
 
     this.checkOutButton = this.checkOutButton.bind(this);
@@ -14,16 +18,31 @@ class App extends React.Component {
   }
 
 checkOutButton() {
-  console.log('button clicked')
-  let f1switch = !this.state.form1;
-  this.setState({form1 : f1switch })
+  console.log('checkout button clicked')
+  this.setState({form1 : true, next: true, checkout : false })
+  //IF statements to prevent
 }
 
 nextButton() {
-  console.log('next clicked')
-  //let f1switch = !this.state.form1;
-  //this.setState({form1 : f1switch })
-}
+  console.log('NEXT')
+
+  if (this.state.form4 === true) {
+    //this.setState({form1 : false, form2: true })
+  }
+
+  if (this.state.form3 === true) {
+    this.setState({form3 : false, form4: true })
+  }
+
+  if (this.state.form2 === true) {
+    this.setState({form2 : false, form3: true })
+  }
+
+  if (this.state.form1 === true) {
+    this.setState({form1 : false, form2: true})
+  }
+
+  }
 
 
 render() {
@@ -31,9 +50,11 @@ render() {
     React app here
 
     <div> &nbsp; </div>
-    <div> <button onClick={this.checkOutButton}>Checkout</button> </div>
-    <div> {this.state.form1 ? <F1 /> : 'Click Checkout button to check out!'} </div>
-    <div> {this.state.form2 ? <F2 /> : 'f2 false'} </div>
+    <div> {this.state.checkout ? <button onClick={this.checkOutButton}>Checkout</button> : ''} &nbsp; {this.state.next ? <button onClick={this.nextButton}>NEXT</button> : ''}  </div>
+    <div> {this.state.form1 ? <F1 /> : ''} </div>
+    <div> {this.state.form2 ? <F2 /> : ''} </div>
+    <div> {this.state.form3 ? <F3 /> : ''} </div>
+    <div> {this.state.form4 ? <F4 /> : ''} </div>
 
 
   </div>
@@ -46,29 +67,19 @@ class F1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      form2 : false
+
     };
-    this.f1Next = this.f1Next.bind(this);
+
   }
 
 
-  f1Next() {
-    console.log('f1next clicked')
-    let f2switch = !this.state.form2;
-    this.setState({form2 : f2switch })
-  }
 
   render() {
     return (
       <div>
         <div>FORM ONE HERE</div>
 
-        <div> &nbsp; </div>
-        <div> &nbsp; </div>
-        <div> &nbsp; </div>
-        <div> &nbsp; </div>
-        <div> <button onClick={this.f1Next}>NEXT</button> </div>
-        {this.state.form2 ? 'F2 me': 'getgoing'}
+
       </div>
     );
   }
@@ -101,8 +112,9 @@ class F2 extends React.Component {
         <div> &nbsp; </div>
         <div> &nbsp; </div>
         <div> &nbsp; </div>
-        <div> <button onClick={this.f2Next}>NEXT</button> </div>
-        {this.state.form3 ? 'F3 me': 'getgoing'}
+
+
+
       </div>
     );
   }
@@ -133,8 +145,8 @@ class F3 extends React.Component {
         <div> &nbsp; </div>
         <div> &nbsp; </div>
         <div> &nbsp; </div>
-        <div> <button onClick={this.f3Next}>NEXT</button> </div>
-        {this.state.form4 ? 'F4 me': 'getgoing'}
+
+
       </div>
     );
   }
@@ -169,8 +181,8 @@ class F4 extends React.Component {
         <div> &nbsp; </div>
         <div> &nbsp; </div>
         <div> &nbsp; </div>
-        <div> <button onClick={this.f4Next}>NEXT</button> </div>
-        {this.state.form4 ? 'END ME': 'getgoing'}
+
+
       </div>
     );
   }
